@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option go_package = "test";
+
+
+service Test {
+  rpc SayHello (HelloReq) returns (HelloResp) {}
+}
+
+message HelloReq {
+  string name = 1;
+}
+
+message HelloResp{
+  string message = 1;
+}
+
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.1F.10.036',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.1F.10.037',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.065',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.066',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.067',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.068',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.070',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.028',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.2F.10.032',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.3F.10.064',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.041',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.034',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.045',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.049',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.056',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.054',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.001',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.003',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.004',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.007',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.033',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.008',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.023',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.025',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.031',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.024',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.4F.10.032',;
+    update point set project_id = '216183549999448933delete' where point_code = '30-57.20.10.20-001.6F.10.027',;

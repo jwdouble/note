@@ -1,0 +1,117 @@
+package benchmark
+
+type Small struct {
+	a int
+	b int
+	c int
+}
+
+type Middle struct {
+	a int
+	b int
+	c int
+	d int
+	e int
+	f int
+	g int
+	h int
+	i int
+	j int
+	k int
+	l int
+	m int
+	n int
+	o int
+	p int
+	q int
+	r int
+	s int
+	t int
+	u int
+	v int
+	w int
+	x int
+	y int
+	z int
+}
+
+type Big struct {
+	aa string
+	ab string
+	ac string
+	ad string
+	ae string
+	af string
+	ag string
+	ah string
+	ai string
+	aj string
+	ak string
+	al string
+	am string
+	an string
+	ao string
+	ap string
+	aq string
+	ar string
+	as string
+	at string
+	au string
+	av string
+	aw string
+	ax string
+	ay string
+	az string
+	ba float64
+	bb float64
+	bc float64
+	bd float64
+	be float64
+	bf float64
+	bg float64
+	bh float64
+	bi float64
+	bj float64
+	bk float64
+	bl float64
+	bm float64
+	bn float64
+	bo float64
+	bp float64
+	bq float64
+	br float64
+	bs float64
+	bt float64
+	bu float64
+	bv float64
+	bw float64
+	bx float64
+	by float64
+	bz float64
+	ca int
+	cb int
+	cc int
+	cd int
+	ce int
+	cf int
+	cg int
+	ch int
+	ci int
+	cj int
+	ck int
+	cl int
+	cm int
+	cn int
+	co int
+	cp int
+	cq int
+	cr int
+	cs int
+	ct int
+	cu int
+	cv int
+	cw int
+	cx int
+	cy int
+	cz int
+}
