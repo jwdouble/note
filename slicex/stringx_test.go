@@ -66,3 +66,41 @@ func Test_trimString(t *testing.T) {
 	s = trimAllSpace(s)
 	fmt.Println(s)
 }
+
+func Test_split(t *testing.T) {
+	s := `${aa}${bb}${cc}`
+	fmt.Println(strings.Split(s, `${`))
+}
+
+func renderDataSM(src string, m map[string]string) string {
+	var param []string
+	sp := strings.Split(src, `${`)
+	for n := range sp {
+		i := strings.IndexRune(sp[n], '}')
+		if i > 0 {
+			param = append(param, sp[n][:i])
+		}
+	}
+
+	var data strings.Builder
+	data.WriteString(`[`)
+	for n, v := range param {
+		if n != 0 {
+			data.WriteString(`,`)
+		}
+		data.WriteString(`"`)
+		data.WriteString(m[v])
+		data.WriteString(`"`)
+	}
+	data.WriteString(`]`)
+
+	return data.String()
+}
+
+func Test_rand(t *testing.T) {
+	r := renderDataSM(`haha${aa}xx${bb}888`, map[string]string{
+		"aa": "1",
+		"bb": "2",
+	})
+	fmt.Println(r)
+}
