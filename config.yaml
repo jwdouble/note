@@ -1,3 +1,4 @@
 app:
   engine:
     log: redis
+test: 1
