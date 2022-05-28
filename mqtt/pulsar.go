@@ -46,14 +46,14 @@ func read() {
 }
 
 func Listen() {
-	mq.GetInstance().ConsumeFunc("event-*-*", "cmpt-event", func(msg mq.Message) error {
+	mq.GetInstance().ConsumeFunc("event-*-*", "cmpt-event", func(ctx context.Context, msg mq.Messager) error {
 		fmt.Println(msg.Body())
 		return nil
 	}, 1)
 }
 
 func Send() {
-	err := mq.GetInstance().Publish("event-alarmNotice-quvrkqwy6fs7posx", json.MustMarshal("haha"))
+	err := mq.GetInstance().Publish(context.Background(), "event-alarmNotice-quvrkqwy6fs7posx", json.MustMarshal("haha"))
 	if err != nil {
 		fmt.Println(err)
 	}

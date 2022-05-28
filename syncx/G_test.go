@@ -2,8 +2,10 @@ package syncx
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"testing"
+	"time"
 )
 
 func Test_gofunc(t *testing.T) {
@@ -20,4 +22,21 @@ func Test_gofunc(t *testing.T) {
 
 	wg.Wait()
 	fmt.Println(a)
+}
+
+func Test_Gnum(t *testing.T) {
+	go func() {
+		for {
+			fmt.Println("G: ", runtime.NumGoroutine())
+			time.Sleep(500 * time.Millisecond)
+		}
+	}()
+
+	for i := 0; i < 10; i++ {
+		go func() {
+			fmt.Println(i)
+		}()
+		time.Sleep(100 * time.Millisecond)
+	}
+
 }
