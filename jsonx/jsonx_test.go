@@ -93,24 +93,12 @@ func Test_marshalArray(t *testing.T) {
 		}
 	}
 
-	arr := []T1{}
-	arr = append(arr, T1{Name: "1", Energy: 11.0})
+	arr := make([]*T1, 2)
+	arr[0] = &T1{Name: "1", Energy: 11.0}
+	arr[1] = &T1{Name: "2", Energy: 22.0}
 
-	buf, err := json.Marshal(arr)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	t2 := &T2{}
-	err = json.Unmarshal(buf, &t2.Data)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(t2)
-
-	as := []string{"11", "22"}
-	fmt.Println(string(json.MustMarshal(as)))
+	buf := json.MustMarshalString(arr)
+	fmt.Println(string(buf))
 }
 
 func Test_marshalString(t *testing.T) {

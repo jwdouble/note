@@ -88,5 +88,11 @@ func Test_replace(t *testing.T) {
 	for k, v := range m {
 		fmt.Println(k + "--->" + v)
 	}
+}
 
+func Test_len(t *testing.T) {
+	var a, b map[string]string
+	var list []string
+	l := len(list)
+	fmt.Println(l, &list, &a, &b)
 }
