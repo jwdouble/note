@@ -1,12 +1,12 @@
 package timex
 
 import (
-	"arctron.lib/sqlkit"
 	"fmt"
 	"strconv"
 	"testing"
 	"time"
 
+	"arctron.lib/sqlkit"
 	"arctron.lib/timex"
 )
 
@@ -23,7 +23,9 @@ func Test_calculate(t *testing.T) {
 }
 
 func Test_calculate1(t *testing.T) {
-	fmt.Println("-->", sqlkit.TimestampNewLocal(time.Unix(0, 0)))
+	c := time.Now()
+	fmt.Println(time.Now().Unix())
+	fmt.Println(sqlkit.TimestampNewLocal(c).GetSeconds())
 }
 
 func Test_sss(t *testing.T) {
