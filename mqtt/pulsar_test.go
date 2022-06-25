@@ -45,10 +45,7 @@ func Test_pn(t *testing.T) {
 	mq.Register(conf.APP_PULSAR_DSN.Value("pulsar://10.243.11.35:6650"))
 	ctx := context.Background()
 	for {
-		go func() {
-			mq.GetInstance().Publish(ctx, "p1", []byte{1})
-		}()
-
+		mq.GetInstance().Publish(ctx, "p1", []byte{1})
 		time.Sleep(time.Second)
 	}
 

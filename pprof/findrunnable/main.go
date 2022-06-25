@@ -53,12 +53,8 @@ func T1() {
 var ch = make(chan int, 320)
 
 func T1Listen() {
-	var count int
 	mq.GetInstance().ConsumeFunc("pprof-test", "note", func(ctx context.Context, msg mq.Messager) error {
-		count++
-		//fmt.Println(count)
-		time.Sleep(1 * time.Microsecond)
-		ch <- 1
+		mq.GetInstance().Publish(ctx, "p1", []byte{1})
 		return nil
 	}, 5)
 }
