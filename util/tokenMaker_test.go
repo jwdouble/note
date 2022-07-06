@@ -1,11 +1,11 @@
 package util
 
 import (
-	"context"
 	"fmt"
 	"testing"
+	"time"
 
-	"arctron.lib/ctxkit"
+	"arctron.lib/seq"
 	"arctron.lib/token"
 )
 
@@ -16,13 +16,20 @@ func Test_TokenMaker(t *testing.T) {
 }
 
 func Test_ctxMaker(t *testing.T) {
-	tid := "31e4e0a89e8d4ef38a0eacbf99c55dac"
-	uid := "220394560432374782"
-	tokenStr := token.Sign(tid, "*", uid, "", 0, map[string]interface{}{"privilege": true})
+	//tid := "31e4e0a89e8d4ef38a0eacbf99c55dac"
+	//uid := "220394560432374782"
+	//tokenStr := token.Sign(tid, "*", uid, "", 0, map[string]interface{}{"privilege": true})
+	//
+	//c, _ := token.Parse(tokenStr)
+	//
+	//ctx := ctxkit.FromContext(c.WithContext(context.Background()), "token", c.Raw())
+	//token.MustFromContext(ctx)
+	//fmt.Println(c.GetTenantId(), c.GetUserId())
+}
 
-	c, _ := token.Parse(tokenStr)
-
-	ctx := ctxkit.FromContext(c.WithContext(context.Background()), "token", c.Raw())
-	token.MustFromContext(ctx)
-	fmt.Println(c.GetTenantId(), c.GetUserId())
+func Test_idMaker(t *testing.T) {
+	for i := 0; i < 5; i++ {
+		fmt.Println(seq.NextID())
+		time.Sleep(10 * time.Millisecond)
+	}
 }

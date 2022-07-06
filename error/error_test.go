@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	"arctron.lib/errx/v2"
+	"arctron.lib/logx"
 	"github.com/pkg/errors"
 )
 
@@ -27,4 +29,21 @@ func (e *ErrTest) Error() string {
 
 func Test(t *testing.T) {
 	fmt.Println(errors.New("1") == errors.New("1")) //false
+}
+
+func throwErr(err error, funcName string) {
+	if err != nil {
+		logx.WithCaller().Errorf(funcName+" %s", err)
+	}
+}
+
+func Test_x1(t *testing.T) {
+
+	err := errx.New(9999, 9999, "test err")
+
+	throwErr(err, "nn")
+
+	logx.WithCaller().Errorf("err: 2")
+
+	logx.WithCaller().Errorf("err: 3")
 }

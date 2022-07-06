@@ -1,12 +1,11 @@
 package http
 
 import (
+	"bytes"
 	"fmt"
 	"net"
-	"strconv"
+	"strings"
 	"testing"
-
-	"jw.lib/jsonx"
 )
 
 func pushErr(err error) {
@@ -29,16 +28,24 @@ func Test_httpProxy(t *testing.T) {
 }
 
 func handle(conn net.Conn) {
-	buf := make([]byte, 1024*10)
+	b := make([]byte, 1024)
 
-	n, err := conn.Read(buf[:])
+	n, err := conn.Read(b)
+	fmt.Println(n, err)
+
+	buf := bytes.NewBuffer(b)
+	data, err := buf.ReadBytes('\n')
 	pushErr(err)
 
-	type resp struct {
-		Code int32  `json:"code,omitempty"`
-		Msg  string `json:"msg,omitempty"`
-	}
+	fmt.Println(data)
 
-	n, err = conn.Write(jsonx.MustMarshal(&resp{Code: 200, Msg: strconv.Itoa(n)}))
-	fmt.Println(n, err)
+	list := strings.Fields(string(data))
+	method := list[0]
+	url := list[1]
+	fmt.Println(method, url, list)
+
+	resp, err := net.Dial("tcp", "150.158.7.96:80")
+	pushErr(err)
+	resp.Read(b)
+	conn.Write(b)
 }

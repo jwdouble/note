@@ -1,4 +1,6 @@
 app:
   engine:
     log: redis
-test: 1
+  msg:
+    sm:
+      url: "http://10.10.95.115:7200/arcplus/sms/sendByTemplate"
