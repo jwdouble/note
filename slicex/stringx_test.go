@@ -70,6 +70,10 @@ func Test_trimString(t *testing.T) {
 func Test_split(t *testing.T) {
 	s := `${aa}${bb}${cc}`
 	fmt.Println(strings.Split(s, `${`))
+	s1 := "abcdefg"
+	fmt.Println(s1)
+	r := strings.Split(s1, "")
+	fmt.Println(r, len(r))
 }
 
 func renderDataSM(src string, m map[string]string) string {
