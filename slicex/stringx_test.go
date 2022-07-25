@@ -108,3 +108,23 @@ func Test_rand(t *testing.T) {
 	})
 	fmt.Println(r)
 }
+
+func Test_getBigTypeCode(t *testing.T) {
+	r := getBigTypeCode("30-50.66.77")
+	fmt.Println(r)
+	r1 := getBigTypeCode("30-50.66.77.88.99")
+	fmt.Println(r1)
+	r2 := getBigTypeCode("30-50.66")
+	fmt.Println(r2)
+}
+
+func getBigTypeCode(code string) string {
+	l := strings.Split(code, ".")
+	if len(l) >= 3 {
+		l = l[:1]
+		l = append(l, []string{"00", "00"}...)
+	} else {
+		return ""
+	}
+	return strings.Join(l, ".")
+}

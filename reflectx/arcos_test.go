@@ -1,9 +1,11 @@
 package reflectx
 
 import (
-	"arctron.lib/field"
 	"fmt"
+	"reflect"
 	"testing"
+
+	"arctron.lib/field"
 )
 
 type A struct {
@@ -19,4 +21,16 @@ func Test_lib(t *testing.T) {
 		a := ans.([]string)
 		fmt.Println(a)
 	}
+}
+
+func Test_reflectx(t *testing.T) {
+	aa := &A{
+		s: "1",
+		k: "2",
+	}
+	v := reflect.ValueOf(aa)
+	fmt.Println(v.Kind())
+	fmt.Println(v.Type())
+	fmt.Println(v.Elem())
+	fmt.Println(v.Field(0))
 }

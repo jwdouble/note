@@ -96,3 +96,14 @@ func Test_len(t *testing.T) {
 	l := len(list)
 	fmt.Println(l, &list, &a, &b)
 }
+
+func Test_lief(t *testing.T) {
+	var a []string
+	if true {
+		tmp := []string{"1", "2"}
+		var tmp1 interface{}
+		tmp1 = tmp
+		a = tmp1.([]string)
+	}
+	fmt.Println(a)
+}
