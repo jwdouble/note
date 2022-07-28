@@ -6,14 +6,10 @@ import (
 	"testing"
 
 	"arctron.lib/codec/json"
-	"jw.lib/logx"
 )
 
 func Test_marshal(t *testing.T) {
-	s := `{"createAt":"2022-01-19T07:43:29.17502184-05:00","Alevel":1,"funcName":"","content":"hahahah13","std":"redis"}`
-	buf := &logx.Logger{}
-	err := json.Unmarshal([]byte(s), buf)
-	fmt.Println(err)
+
 }
 
 type Info struct {

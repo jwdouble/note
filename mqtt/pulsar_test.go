@@ -1,11 +1,7 @@
 package mqtt
 
 import (
-	"arctron.lib/conf"
-	"arctron.lib/mq"
-	"context"
 	"fmt"
-	"runtime"
 	"testing"
 	"time"
 )
@@ -17,36 +13,22 @@ func Test_pulsar(t *testing.T) {
 	fmt.Println("finish")
 }
 
-func Test_send(t *testing.T) {
-	fmt.Println("send")
-	Send()
-}
+//func Test_send(t *testing.T) {
+//	Send1()
+//}
 
 func Test_listen(t *testing.T) {
 	fmt.Println("listen")
-	Listen()
+	ch1 := make(chan string, 32)
+	go Send2(ch1)
+	Send1()
+	time.Sleep(time.Millisecond * 10)
+	Listen1(ch1)
+	Listen2()
+
 	select {}
 }
 
-func Test_pn(t *testing.T) {
-	go func() {
-		for {
-			fmt.Println("G: ", runtime.NumGoroutine())
-			time.Sleep(500 * time.Millisecond)
-		}
-	}()
-
-	go func() {
-		mq.GetInstance().ConsumeFunc("p1", "1", func(ctx context.Context, msg mq.Messager) error {
-			return nil
-		}, 100)
-	}()
-
-	mq.Register(conf.APP_PULSAR_DSN.Value("pulsar://10.243.11.35:6650"))
-	ctx := context.Background()
-	for {
-		mq.GetInstance().Publish(ctx, "p1", []byte{1})
-		time.Sleep(time.Second)
-	}
-
+func Test_sendx(t *testing.T) {
+	Send1()
 }

@@ -18,7 +18,7 @@ func init() {
 
 func pub() {
 	p, err := client.CreateProducer(pulsar.ProducerOptions{
-		Topic: "jwtest",
+		Topic: "jwtest-1",
 	})
 	if err != nil {
 		fmt.Println(err)
@@ -45,16 +45,40 @@ func read() {
 	fmt.Println("----------->", string(m.Payload()))
 }
 
-func Listen() {
-	mq.GetInstance().ConsumeFunc("event-*-*", "cmpt-event", func(ctx context.Context, msg mq.Messager) error {
-		fmt.Println(msg.Body())
+func Listen1(ch chan string) {
+	mq.GetInstance().ConsumeFunc("123-*", "123", func(ctx context.Context, msg mq.Messager) error {
+		r := msg.Raw().(*mq.PulsarMessage).Topic()
+		fmt.Println("listen1: ", r)
+		ch <- r
+		//fmt.Println(string(msg.Body()))
 		return nil
-	}, 1)
+	}, 5)
 }
 
-func Send() {
-	err := mq.GetInstance().Publish(context.Background(), "event-alarmNotice-quvrkqwy6fs7posx", json.MustMarshal("haha"))
+func Listen2() {
+	mq.GetInstance().ConsumeFunc("456-*", "465", func(ctx context.Context, msg mq.Messager) error {
+		fmt.Println("listen2: ", msg.Raw().(*mq.PulsarMessage).Topic())
+		fmt.Println("")
+		//fmt.Println(string(msg.Body()))
+		return nil
+	}, 5)
+}
+
+func Send1() {
+	fmt.Println("send1")
+	err := mq.GetInstance().Publish(context.Background(), "123-xxx11", json.MustMarshal("haha1"))
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+func Send2(ch chan string) {
+	for v := range ch {
+		fmt.Println("send2: ", v)
+		err := mq.GetInstance().Publish(context.Background(), "456-xxx", json.MustMarshal("haha2"))
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+
 }

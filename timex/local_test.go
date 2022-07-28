@@ -2,6 +2,7 @@ package timex
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 	"time"
 )
@@ -12,12 +13,16 @@ func Test_timeLocal(t *testing.T) {
 	//默认时区
 	testTime := "1995-08-04 02:05:05"
 
-	fmt.Println(time.Now())
-	fmt.Println(time.Now().Local())
-	fmt.Println(time.Now().UTC())
-	fmt.Println(time.Now().UTC().Local())
-	fmt.Println(time.Now().Local().Local())
-	fmt.Println(time.Now().UTC().UTC())
+	current := time.Now()
+
+	fmt.Println(current.UnixNano())
+	fmt.Println(strconv.Itoa(time.Now().Nanosecond()))
+	fmt.Println(strconv.ParseInt(strconv.Itoa(time.Now().Nanosecond()), 1, 64))
+	fmt.Println(current.Local())
+	fmt.Println(current.UTC())
+	fmt.Println(current.UTC().Local())
+	fmt.Println(current.Local().Local())
+	fmt.Println(current.UTC().UTC())
 	// result: timex now return timex with local timex zone
 
 	fmt.Println("/**********************************/")
@@ -27,7 +32,6 @@ func Test_timeLocal(t *testing.T) {
 	// result: timex parse return utc,recommend use parse in location
 
 	fmt.Println("/**********************************/")
-	current := time.Now()
 	fmt.Println(time.Unix(current.Unix(), 0))
 	fmt.Println(time.Unix(current.UTC().Unix(), 0))
 	// result: timex unix return timex with local zone
